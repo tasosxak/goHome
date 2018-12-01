@@ -36,44 +36,64 @@ export default class HomeScreen extends React.Component {
     };
 
 
-    handleGetDirections = async () => {
+        handleGetDirections = async () => {
 
-        var {status} = await Permissions.askAsync(Permissions.LOCATION)
+            var {status} = await Permissions.askAsync(Permissions.LOCATION)
 
-        if (status !== 'granted') {
-            alert('Permission to access location was denied');
-        } else  {
+            if (status !== 'granted') {
+                alert('Permission to access location was denied');
+            } else  {
 
-            var location = await Location.getCurrentPositionAsync({});
+                var location = await Location.getCurrentPositionAsync({});
 
-            var long = location.coords.longitude;
-            var lat = location.coords.latitude;
+                var long = location.coords.longitude;
+                var lat = location.coords.latitude;
 
-            const data = {
-                origin: {
-                    latitude: lat,
-                    longitude: long
-                },
-                destination: {
-                    latitude: -33.8600024,
-                    longitude: 18.697459
-                },
-                params: [
-                    {
-                        key: "travelmode",
-                        value: "walking"        // may be "driving", "walking", "bicycling" or "transit" as well
+                const data = {
+                    origin: {
+                        latitude: lat,
+                        longitude: long
                     },
-                    {
-                        key: "dir_action",
-                        value: "navigate"       // this instantly initializes navigation using the given travel mode
-                    }
-                ]
+                    destination: {
+                        latitude: -33.8600024,
+                        longitude: 18.697459
+                    },
+                    params: [
+                        {
+                            key: "travelmode",
+                            value: "walking"        // may be "driving", "walking", "bicycling" or "transit" as well
+                        },
+                        {
+                            key: "dir_action",
+                            value: "navigate"       // this instantly initializes navigation using the given travel mode
+                        }
+                    ]
+                }
+
+                getDirections(data);
+
             }
-
-            getDirections(data);
-
         }
-    }
+
+            handleSMSSend = () => {
+
+
+                const {  Permissions } = Expo;
+              Permissions.askAsync(Permissions.SMS).then((status) => {
+
+              //alert("Sending...")
+              Expo.SMS.sendSMSAsync(['+306974394694'], "Μαζέψτε μεεεε. Ειμαι μεθυσμένοοοος !!!").then(result =>{
+              //alert(JSON.stringify(result));
+
+              }).catch(error=>{
+              //alert(error)
+              })
+              })
+              .catch(error=>{
+              //alert(error);
+              })
+
+            }
 
 
   render() {
@@ -84,6 +104,10 @@ export default class HomeScreen extends React.Component {
             <Button
             onPress={this.handleGetDirections}
             title="GO HOME"/>
+            <Text></Text>
+            <Button
+            onPress={this.handleSMSSend}
+            title="SMS MOM"/>
           </View>
         </ScrollView>
       </View>

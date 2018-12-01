@@ -24,8 +24,8 @@ export default class FirstQuestion extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Text>Που είναι το σπίτι σου;</Text>
-          <Button onPress={() => {this.props.navigation.navigate('SecondScreen') }} title="Εντάξει"/>
+        <Image source={require('../assets/images/drunk.jpg')  style={{width: 400, height: 450}}} />
+          <Button onPress={() => {this.props.navigation.navigate('SecondScreen') }} title="ΕΠΟΜΕΝΟ"/>
         </ScrollView>
       </View>
     );

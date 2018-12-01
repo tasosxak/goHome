@@ -19,6 +19,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-geocoding": "^0.3.0",
     "react-native-google-maps-directions": "^2.0.0",
+    "react-native-sms-x": "^1.0.6",
     "react-navigation": "^2.18.2"
   },
   "devDependencies": {

@@ -12,6 +12,7 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+import SendSMS from 'react-native-sms-x';
 
 export default class SecondQuestion extends React.Component {
   static navigationOptions = {
@@ -23,9 +24,19 @@ export default class SecondQuestion extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Text>skrin 2</Text>
 
-          <Button onPress={()=>{this.props.navigation.navigate('ThirdScreen')}} title="ok"/>
+          <Text>Ορισμός σπιτιού χρήστη</Text>
+          <Image source={require('../assets/images/map.jpg')} style={{width: 400, height: 450}}/>
+
+          <Button onPress={()=>{
+
+            this.props.navigation.navigate('ThirdScreen')
+
+            // you can put any number as Id to identify which message being process
+            //SendSMS.send(123, "+306974394694", "Μαζέψτε μεεεε. Ειμαι μεθυσμένοοοος !!!", (msg)=>{ alert(msg) });
+
+          }}
+          title="ΕΠΟΜΕΝΟ"/>
         </ScrollView>
       </View>
     );

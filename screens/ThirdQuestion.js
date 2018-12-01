@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  TextInput,
   Button
 } from 'react-native';
 import { WebBrowser } from 'expo';
@@ -23,9 +24,44 @@ export default class ThirdQuestion extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Text>skrin 3</Text>
+          <Text>Ορισμός επαφής άμεσης δράσης</Text>
 
-          <Button onPress={()=>{this.props.navigation.navigate('TabNavigator')}} title="ok"/>
+          <TextInput
+          style={{height: 40}}
+          placeholder="6955555555"
+          onChangeText={(text) => {}}
+          value="+306974394694"
+        />
+
+          <Button onPress={()=>{
+            this.props.navigation.navigate('TabNavigator')
+          }
+          }
+
+/*
+
+
+
+  const {  Permissions } = Expo;
+Permissions.askAsync(Permissions.SMS).then((status) => {
+
+alert("Sending...")
+Expo.SMS.sendSMSAsync(['306974394694'], "Μαζέψτε μεεεε. Ειμαι μεθυσμένοοοος !!!").then(result =>{
+alert(JSON.stringify(result));
+
+}).catch(error=>{
+alert(error)
+})
+})
+.catch(error=>{
+alert(error);
+})
+
+
+*/
+
+
+          title="ok"/>
         </ScrollView>
       </View>
     );
