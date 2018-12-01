@@ -6,6 +6,9 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import FirstQuestion from '../screens/FirstQuestion';
+import SecondQuestion from '../screens/SecondQuestion';
+import ThirdQuestion from '../screens/ThirdQuestion';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -53,8 +56,18 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-export default createBottomTabNavigator({
+const tabnavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
 });
+
+
+const nav = createStackNavigator({
+  FirstScreen: { screen: FirstQuestion },
+  SecondScreen: {screen: SecondQuestion},
+  ThirdScreen: {screen: ThirdQuestion},
+  TabNavigator: tabnavigator,
+});
+
+export default nav;
