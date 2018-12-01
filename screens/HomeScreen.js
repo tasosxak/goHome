@@ -10,6 +10,8 @@ import {
   Button,
 } from 'react-native';
 
+import Geocoder from 'react-native-geocoding';
+
 import { MonoText } from '../components/StyledText';
 import getDirections from 'react-native-google-maps-directions';
 
@@ -48,7 +50,7 @@ export default class HomeScreen extends React.Component {
             var lat = location.coords.latitude;
 
             const data = {
-                source: {
+                origin: {
                     latitude: lat,
                     longitude: long
                 },
@@ -68,8 +70,7 @@ export default class HomeScreen extends React.Component {
                 ]
             }
 
-            getDirections(data)
-            alert(data);
+            getDirections(data);
 
         }
     }
